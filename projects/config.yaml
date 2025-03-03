@@ -1,6 +1,1 @@
-project:
-  id: 'tt10'
-  name: 'Tiny Tapeout 10'
-  top_module: 'openframe_project_wrapper'
-  project_dir: '.'
-  wokwi_id: 0
+../config.yaml

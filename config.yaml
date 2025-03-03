@@ -1,6 +1,12 @@
-project:
-  id: 'tt10'
-  name: 'Tiny Tapeout 10'
-  top_module: 'openframe_project_wrapper'
-  project_dir: '.'
-  wokwi_id: 0
+DESIGN_NAME: 'My first design'
+project_dir: /home/sad/projects/tinytapeout-10
+VERILOG_FILES:
+  - /home/sad/projects/tinytapeout-10/src/and_gate.v
+  - /home/sad/projects/tinytapeout-10/src/and_gate_tb.v
+id: 'tt10'
+name: 'Tiny Tapeout 10'
+top_module: 'tt_um_and_gate'
+wokwi_id: 0
+
+clock:
+  period_ns: 10

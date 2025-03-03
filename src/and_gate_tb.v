@@ -1,28 +1,35 @@
 `timescale 1ns / 1ps
 
 module and_gate_tb;
-    reg A, B;
-    wire Y;
+    reg clk = 0;
+    reg rst_n = 0;
+    reg ena = 1;
+    reg [7:0] ui_in;      // 8-bit input
+    wire [7:0] uo_out;    // 8-bit output
+    wire [7:0] uio_inout; // 8-bit bidirectional (set to high-Z in module)
 
-    // Instantiate the module under test
-    and_gate uut (
-        .A(A),
-        .B(B),
-        .Y(Y)
+    // Instantiate module under test
+    tt_um_and_gate uut (
+        .clk(clk), 
+        .rst_n(rst_n),
+        .ena(ena), 
+        .ui_in(ui_in), 
+        .uo_out(uo_out),
+        .uio_inout(uio_inout)
     );
 
-    initial begin
-        // Apply test vectors
-        A = 0; B = 0; #10;
-        A = 0; B = 1; #10;
-        A = 1; B = 0; #10;
-        A = 1; B = 1; #10;
-        
-        // End simulation
-        $finish;
-    end
+    // Generate clock
+    always #5 clk = ~clk;
 
     initial begin
-        $monitor("Time = %0t | A = %b, B = %b, Y = %b", $time, A, B, Y);
+        #10 rst_n = 1;  // Release reset after 10ns
+
+        // Test AND logic
+        ui_in = 8'b00000000; #10;
+        ui_in = 8'b00000001; #10;
+        ui_in = 8'b00000010; #10;
+        ui_in = 8'b00000011; #10;  // AND gate should output 1 on bit 0
+
+        $finish;
     end
 endmodule

@@ -1,8 +1,12 @@
 project:
   title:        "Basic AND Gate"   # Simple starting point
-  author:       "Henrik Bach"        # Your name
+  author:       "Henrik Bach"      # Your name
   description:  "A basic AND gate implemented in Verilog"
   language:     "Verilog"
+  top_module:   tt_um_and_gate
+  source_files:
+    - /home/sad/projects/tinytapeout-10/src/and_gate.v
+    - /home/sad/projects/tinytapeout-10/src/and_gate_tb.v
   clock_hz:     0                  # No clock needed for simple logic
   tiles:        "1x1"              # Smallest size
 
